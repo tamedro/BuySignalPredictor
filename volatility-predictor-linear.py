@@ -14,7 +14,7 @@ def read_csv(filename):
     return rows[1:]     # remove field names and return just data 
     
 def compile_features_and_values(rows):   
-    num_days = 9
+    num_days = 1
     
     feature_sets = []
     value_sets = []
@@ -32,7 +32,7 @@ def compile_features_and_values(rows):
     return feature_sets, value_sets    
     
 def predict(regr, rows, day):
-    num_days = 9
+    num_days = 1
 
     # day = 0 is the most recent day
     ii = day
