@@ -25,10 +25,10 @@ def compile_features_and_values(rows):
             #print ii, jj, day_index
         
             # fields: Date,Open,High,Low,Close,Volume,Adj Close
-            features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][6])]
+            features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][4])]
         
         feature_sets += [features]
-        value_sets += [float(rows[ii][4])]
+        value_sets += [float(rows[ii][7])]
     return feature_sets, value_sets    
     
 def predict(regr, rows, day):
@@ -40,9 +40,9 @@ def predict(regr, rows, day):
     for jj in range( num_days ):
         day_index = ii + jj        
         # fields: Date,Open,High,Low,Close,Volume,Adj Close
-        features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][6])]
+        features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][4])]
 
-    print "close prediction for day", day, ":", regr.predict(features)
+    print "volatility for day", day, ":", regr.predict(features)
     
     
     
