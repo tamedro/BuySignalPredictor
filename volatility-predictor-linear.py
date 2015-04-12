@@ -14,7 +14,7 @@ def read_csv(filename):
     return rows[1:]     # remove field names and return just data 
     
 def compile_features_and_values(rows):   
-    num_days = 5
+    num_days = 1
     
     feature_sets = []
     value_sets = []
@@ -25,14 +25,14 @@ def compile_features_and_values(rows):
             #print ii, jj, day_index
         
             # fields: Date,Open,High,Low,Close,Volume,Adj Close
-            features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][4])]
+            features += [float(rows[day_index][1]), float(rows[day_index][2])]
         
         feature_sets += [features]
-        value_sets += [float(rows[ii][7])]
+        value_sets += [float(rows[ii][1])]
     return feature_sets, value_sets    
     
 def predict(regr, rows, day):
-    num_days = 5
+    num_days = 1
 
     # day = 0 is the most recent day
     ii = day
@@ -40,15 +40,15 @@ def predict(regr, rows, day):
     for jj in range( num_days ):
         day_index = ii + jj        
         # fields: Date,Open,High,Low,Close,Volume,Adj Close
-        features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][4])]
+        features += [float(rows[day_index][1]), float(rows[day_index][2])]
 
-    print "volatility for day", day, ":", regr.predict(features)
+    print "volatility for 2007: ", regr.predict(features)
     
     
     
 
 #features, mpg = read_mpg('data.txt')
-rows = read_csv('ge-modified.csv')
+rows = read_csv('AFLAC-log-volatility.csv')
 features, mpg = compile_features_and_values(rows)
 
 #print mpg
@@ -63,9 +63,8 @@ regr.fit(features, mpg)
 print regr.coef_
 print regr.intercept_
 
-for day in range(5):
+for day in range(1):
     predict(regr, rows, day)
-
 
 #print "mean(mpg):", mean(mpg)
 
