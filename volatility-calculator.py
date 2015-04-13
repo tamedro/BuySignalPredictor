@@ -20,15 +20,16 @@ def calculate_volatility(data, time_interval, file_num):
     for ii in range(len(data.rows)):
         if ii + time_interval < len(data.rows):
             avg_close = 0            
-            close_sum = 0
             deviation = 0
             st_dev_sum = 0
+            returns_sum = 0
             st_dev_list = []
             for jj in range(time_interval):
-                close_sum = close_sum + float(data.rows[ii + jj][data.close_index])
-            avg_close = close_sum / time_interval
+                returns =  (float(data.rows[ii + jj][data.close_index]) / (float(data.rows[ii + jj + 1][data.close_index]))) - 1
+                returns_sum = returns_sum + returns
+            avg_close = returns_sum / time_interval
             for jj in range(time_interval):
-                deviation = float(data.rows[ii+jj][data.close_index]) - avg_close
+                deviation =  ((float(data.rows[ii + jj][data.close_index]) / (float(data.rows[ii + jj + 1][data.close_index]))) - 1) - avg_close
                 deviation_sq = deviation * deviation
                 st_dev_list.append(deviation_sq)
             for jj in range (len(st_dev_list)):
@@ -44,7 +45,7 @@ def calculate_volatility(data, time_interval, file_num):
 
 def write_results(row, file_num):
     import csv
-    file_name = 'ge-'
+    file_name = 'AFL-original-'
     file_name += `file_num`
     file_name += '.csv'
     with open(file_name, 'a') as csvfile:
@@ -58,12 +59,12 @@ def read_csv(filename):
     print rows[0]       # print field names
     return rows[1:]     # remove field names and return just data 
     
-rows = read_csv('ge.csv')
+rows = read_csv('AFL-original.csv')
 data = Data(rows)
 calculate_volatility(data, 7, 1)
-rows = read_csv('ge-1.csv')
+rows = read_csv('AFL-original-1.csv')
 data = Data(rows)
 calculate_volatility(data, 31, 2)
-rows = read_csv('ge-2.csv')
+rows = read_csv('AFL-original-2.csv')
 data = Data(rows)
 calculate_volatility(data, 365, 3)
