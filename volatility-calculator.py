@@ -45,7 +45,7 @@ def calculate_volatility(data, time_interval, file_num):
 
 def write_results(row, file_num):
     import csv
-    file_name = 'AFL-original-'
+    file_name = 'ge-'
     file_name += `file_num`
     file_name += '.csv'
     with open(file_name, 'a') as csvfile:
@@ -59,12 +59,12 @@ def read_csv(filename):
     print rows[0]       # print field names
     return rows[1:]     # remove field names and return just data 
     
-rows = read_csv('AFL-original.csv')
+rows = read_csv('ge.csv')
 data = Data(rows)
 calculate_volatility(data, 7, 1)
-rows = read_csv('AFL-original-1.csv')
+rows = read_csv('ge-1.csv')
 data = Data(rows)
 calculate_volatility(data, 31, 2)
-rows = read_csv('AFL-original-2.csv')
+rows = read_csv('ge-2.csv')
 data = Data(rows)
 calculate_volatility(data, 365, 3)
