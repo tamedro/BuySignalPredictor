@@ -56,4 +56,5 @@ for day in range(10):
     predictions.append(predict(regr, rows, day))
 error = get_accuracy(predictions, real_values)
 print error
+print predictions
 
