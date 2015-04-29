@@ -55,6 +55,7 @@ def get_date_row(rows, predict_date):
             return ii
     return -1
 
+'''parse arguments'''
 argparser = argparse.ArgumentParser()
 argparser.add_argument("--sym", help="stock symbol",
                         type=str, default='ge', required=False)
@@ -62,22 +63,46 @@ argparser.add_argument("--predictDate", help="day you would like to predict vola
                         type=str, default='2013-04-09', required=False)
 args = argparser.parse_args()
 
-rows = read_csv(args.sym +'-4.csv')
+'''get rows for each symbol'''
+symbols = []
+f = open('symbols.txt', 'r')
+for line in f:
+    symbols.append(line.rstrip())
+print symbols
+rows = []
+for sym in symbols:
+    rows.append(read_csv(sym +'-4.csv'))
+
+'''get predict date row value for each symbol'''
 predict_date = args.predictDate
-date_row = get_date_row(rows, predict_date)
-if date_row < 365:
-    print("predict date must be at least 251 days into file")
-    sys.exit()
-features, mpg = compile_features_and_values(rows, date_row)
+date_rows = []
+for ii in range(len(rows)):
+    date_rows.append(get_date_row(rows[ii], predict_date))
+    if date_rows < 365:
+        print("predict date must be at least 251 days into file")
+        sys.exit()
+
+'''compile features over all symbols'''
+all_features = []
+all_mpg = []
+for ii in range(len(rows)):
+    features, mpg = compile_features_and_values(rows[ii], date_rows[ii])
+    all_features += features
+    all_mpg += mpg
+
+'''build and fit model'''
 regr = linear_model.Lasso(alpha=0.01,fit_intercept=False,normalize=False,max_iter=10000000)   # they call lambda alpha
-regr.fit(features, mpg)
+regr.fit(all_features, all_mpg)
+
+'''calculate error'''
 real_values = []
-real_values.append(float(rows[date_row - 365][9]))
 predictions = []
-predictions.append(predict(regr, rows, date_row))
+for ii in range(len(rows)): 
+    real_values.append(float(rows[ii][date_rows[ii] - 365][9]))
+    predictions.append(predict(regr, rows[ii], date_rows[ii]))
+error = get_accuracy(predictions, real_values)
 print "real_values: ", real_values
 print "predictions: ", predictions
-error = get_accuracy(predictions, real_values)
 print "error: ", error
 
 
