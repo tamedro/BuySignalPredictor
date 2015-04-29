@@ -71,7 +71,8 @@ for line in f:
 print symbols
 rows = []
 for sym in symbols:
-    rows.append(read_csv(sym +'-4.csv'))
+    filename = sym +'-4.csv'
+    rows.append(read_csv("./DATA/processed_csvs/" + filename))
 
 '''get predict date row value for each symbol'''
 predict_date = args.predictDate
