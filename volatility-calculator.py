@@ -1,6 +1,7 @@
 from numpy import mean
 from numpy import array
 import math
+import datetime as dt
 
 class Data:
     def __init__(self, rows):
@@ -43,13 +44,24 @@ def calculate_volatility(data, time_interval, file_num):
             new_row.append(log_vol)
             write_results(new_row, file_num)
 
+def calculate_day_of_week(data, file_num):
+    num_columns = len(data.rows[0])
+    for ii in range(len(data.rows) -1 ):
+        date_string = data.rows[ii][0]
+        date_array = date_string.split("-")
+        today = dt.datetime(int(date_array[0]),int(date_array[1]), int(date_array[2]))
+        new_row = []
+        for jj in range(num_columns):
+            new_row.append(data.rows[ii][jj])
+        new_row.append(int(today.weekday()))
+        write_results(new_row, file_num)
+
 def write_results(row, file_num):
     import csv
-    file_name = 'ge-'
+    file_name = 'AFL-'
     file_name += `file_num`
     file_name += '.csv'
     with open(file_name, 'a') as csvfile:
-        #fieldNames = ['Date','Open','High','Low','Close','Volume','Adj Close','Weekly LogVol','Monthly LogVol','Yearly LogVol']
         writer = csv.writer(csvfile)
         writer.writerow(row)
 
@@ -59,12 +71,15 @@ def read_csv(filename):
     print rows[0]       # print field names
     return rows[1:]     # remove field names and return just data 
     
-rows = read_csv('ge.csv')
+rows = read_csv('AFL.csv')
 data = Data(rows)
 calculate_volatility(data, 7, 1)
-rows = read_csv('ge-1.csv')
+rows = read_csv('AFL-1.csv')
 data = Data(rows)
 calculate_volatility(data, 31, 2)
-rows = read_csv('ge-2.csv')
+rows = read_csv('AFL-2.csv')
 data = Data(rows)
 calculate_volatility(data, 365, 3)
+rows = read_csv('AFL-3.csv')
+data = Data(rows)
+calculate_day_of_week(data, 4)
