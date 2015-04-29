@@ -15,10 +15,28 @@ class Data:
         self.volume_index = 5
         self.adj_close_index = 6
 
-def calculate_volatility(data, time_interval, file_num, symbol):
+def write_results(data, symbol):
+    import csv
+    file_name = symbol + '-'
+    file_name += 'processed'
+    file_name += '.csv'
+    file_name = './DATA/processed_csvs/' + file_name
+    with open(file_name, 'a') as csvfile:
+        writer = csv.writer(csvfile)
+        for ii in range(len(data.rows)):
+            writer.writerow(data.rows[ii])
+
+def read_csv(filename):
+    import csv
+    with open(filename) as f: rows=[tuple(row) for row in csv.reader(f)]
+    print rows[0]       # print field names
+    return rows[1:]     # remove field names and return just data 
+
+def calculate_volatility(data, time_interval):
     """
     calculates volatilites
     """
+    rows = []
     for ii in range(len(data.rows)):
         if ii + time_interval < len(data.rows):
             avg_close = 0            
@@ -43,10 +61,12 @@ def calculate_volatility(data, time_interval, file_num, symbol):
             for jj in range (len(data.rows[ii])):
                 new_row.append(data.rows[ii][jj])
             new_row.append(log_vol)
-            write_results(new_row, file_num, symbol)
+            rows.append(new_row)
+    return rows
 
-def calculate_day_of_week(data, file_num, symbol):
+def calculate_day_of_week(data):
     num_columns = len(data.rows[0])
+    rows = []
     for ii in range(len(data.rows) -1 ):
         date_string = data.rows[ii][0]
         date_array = date_string.split("-")
@@ -55,40 +75,29 @@ def calculate_day_of_week(data, file_num, symbol):
         for jj in range(num_columns):
             new_row.append(data.rows[ii][jj])
         new_row.append(int(today.weekday()))
-        write_results(new_row, file_num, symbol)
+        rows.append(new_row)
+    return rows
 
-def write_results(row, file_num, symbol):
-    import csv
-    file_name = symbol + '-'
-    file_name += `file_num`
-    file_name += '.csv'
-    with open(file_name, 'a') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(row)
-
-def read_csv(filename):
-    import csv
-    with open(filename) as f: rows=[tuple(row) for row in csv.reader(f)]
-    print rows[0]       # print field names
-    return rows[1:]     # remove field names and return just data 
-
+'''Parse arguments'''
 argparser = argparse.ArgumentParser()
 argparser.add_argument("--sym", help="stock symbol",
                         type=str, default='ge', required=False)
 argparser.add_argument("--predictDate", help="day you would like to predict volatilty",
                         type=str, default='2013-04-09', required=False)
 args = argparser.parse_args()
-symbol = args.sym
+read_path = './DATA/original_csvs/'
+write_path = './DATA/processed_csvs/'
 
-rows = read_csv(args.sym + '.csv')
-data = Data(rows)
-calculate_volatility(data, 7, 1, symbol )
-rows = read_csv(args.sym + '-1.csv')
-data = Data(rows)
-calculate_volatility(data, 31, 2, symbol)
-rows = read_csv(args.sym + '-2.csv')
-data = Data(rows)
-calculate_volatility(data, 365, 3, symbol)
-rows = read_csv(args.sym + '-3.csv')
-data = Data(rows)
-calculate_day_of_week(data, 4, symbol)
+symbols = []
+f = open('symbols.txt', 'r')
+for line in f:
+    symbols.append(line.rstrip())
+
+for symbol in symbols:
+    rows = read_csv(read_path + symbol + '.csv')
+    data = Data(rows)
+    data.rows = calculate_volatility(data, 7,)
+    data.rows = calculate_volatility(data, 31,)
+    data.rows = calculate_volatility(data, 365,)
+    data.rows = calculate_day_of_week(data)
+    write_results(data, symbol)

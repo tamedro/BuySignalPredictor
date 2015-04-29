@@ -13,26 +13,24 @@ def read_csv(filename):
     with open(filename) as f: rows=[tuple(row) for row in csv.reader(f)]
     return rows[1:]     # remove field names and return just data 
     
-def compile_features_and_values(rows, date_row):   
-    num_days = 10
+def compile_features_and_values(rows, date_row, regression_days):   
     feature_sets = []
     value_sets = []
-    for ii in range(date_row, len(rows) - num_days):
+    for ii in range(date_row, len(rows) - regression_days):
         features = []
-        for jj in range(num_days):
+        for jj in range(regression_days):
             day_index = ii + jj
-            features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8])]
+            features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8]), float(rows[day_index][10])]
         feature_sets += [features]
         value_sets += [float(rows[ii][9])]
     return feature_sets, value_sets    
     
-def predict(regr, rows, day):
-    num_days = 10
+def predict(regr, rows, day, regression_days):
     ii = day
     features = []
-    for jj in range( num_days ):
+    for jj in range( regression_days ):
         day_index = ii + jj        
-        features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8])]
+        features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8]), float(rows[day_index][10])]
     return regr.predict(features)
 
 def get_real_values(rows, num_predictions):
@@ -61,7 +59,10 @@ argparser.add_argument("--sym", help="stock symbol",
                         type=str, default='ge', required=False)
 argparser.add_argument("--predictDate", help="day you would like to predict volatilty",
                         type=str, default='2013-04-09', required=False)
+argparser.add_argument("--regressionDays", help="Amount of days in a regression sample",
+                        type=int, default=10, required=False)
 args = argparser.parse_args()
+regression_days = args.regressionDays
 
 '''get rows for each symbol'''
 symbols = []
@@ -71,7 +72,7 @@ for line in f:
 print symbols
 rows = []
 for sym in symbols:
-    filename = sym +'-4.csv'
+    filename = sym +'-processed.csv'
     rows.append(read_csv("./DATA/processed_csvs/" + filename))
 
 '''get predict date row value for each symbol'''
@@ -87,12 +88,12 @@ for ii in range(len(rows)):
 all_features = []
 all_mpg = []
 for ii in range(len(rows)):
-    features, mpg = compile_features_and_values(rows[ii], date_rows[ii])
+    features, mpg = compile_features_and_values(rows[ii], date_rows[ii], regression_days)
     all_features += features
     all_mpg += mpg
 
 '''build and fit model'''
-regr = linear_model.Lasso(alpha=0.01,fit_intercept=False,normalize=False,max_iter=10000000)   # they call lambda alpha
+regr = linear_model.Ridge(alpha=1,fit_intercept=False,normalize=False,max_iter=10000000)   # they call lambda alpha
 regr.fit(all_features, all_mpg)
 
 '''calculate error'''
@@ -100,7 +101,7 @@ real_values = []
 predictions = []
 for ii in range(len(rows)): 
     real_values.append(float(rows[ii][date_rows[ii] - 365][9]))
-    predictions.append(predict(regr, rows[ii], date_rows[ii]))
+    predictions.append(predict(regr, rows[ii], date_rows[ii], regression_days))
 error = get_accuracy(predictions, real_values)
 print "real_values: ", real_values
 print "predictions: ", predictions
