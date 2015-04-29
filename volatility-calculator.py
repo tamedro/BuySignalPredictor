@@ -2,6 +2,7 @@ from numpy import mean
 from numpy import array
 import math
 import datetime as dt
+import argparse
 
 class Data:
     def __init__(self, rows):
@@ -14,7 +15,7 @@ class Data:
         self.volume_index = 5
         self.adj_close_index = 6
 
-def calculate_volatility(data, time_interval, file_num):
+def calculate_volatility(data, time_interval, file_num, symbol):
     """
     calculates volatilites
     """
@@ -42,9 +43,9 @@ def calculate_volatility(data, time_interval, file_num):
             for jj in range (len(data.rows[ii])):
                 new_row.append(data.rows[ii][jj])
             new_row.append(log_vol)
-            write_results(new_row, file_num)
+            write_results(new_row, file_num, symbol)
 
-def calculate_day_of_week(data, file_num):
+def calculate_day_of_week(data, file_num, symbol):
     num_columns = len(data.rows[0])
     for ii in range(len(data.rows) -1 ):
         date_string = data.rows[ii][0]
@@ -54,11 +55,11 @@ def calculate_day_of_week(data, file_num):
         for jj in range(num_columns):
             new_row.append(data.rows[ii][jj])
         new_row.append(int(today.weekday()))
-        write_results(new_row, file_num)
+        write_results(new_row, file_num, symbol)
 
-def write_results(row, file_num):
+def write_results(row, file_num, symbol):
     import csv
-    file_name = 'AFL-'
+    file_name = symbol + '-'
     file_name += `file_num`
     file_name += '.csv'
     with open(file_name, 'a') as csvfile:
@@ -70,16 +71,24 @@ def read_csv(filename):
     with open(filename) as f: rows=[tuple(row) for row in csv.reader(f)]
     print rows[0]       # print field names
     return rows[1:]     # remove field names and return just data 
-    
-rows = read_csv('AFL.csv')
+
+argparser = argparse.ArgumentParser()
+argparser.add_argument("--sym", help="stock symbol",
+                        type=str, default='ge', required=False)
+argparser.add_argument("--predictDate", help="day you would like to predict volatilty",
+                        type=str, default='2013-04-09', required=False)
+args = argparser.parse_args()
+symbol = args.sym
+
+rows = read_csv(args.sym + '.csv')
 data = Data(rows)
-calculate_volatility(data, 7, 1)
-rows = read_csv('AFL-1.csv')
+calculate_volatility(data, 7, 1, symbol )
+rows = read_csv(args.sym + '-1.csv')
 data = Data(rows)
-calculate_volatility(data, 31, 2)
-rows = read_csv('AFL-2.csv')
+calculate_volatility(data, 31, 2, symbol)
+rows = read_csv(args.sym + '-2.csv')
 data = Data(rows)
-calculate_volatility(data, 365, 3)
-rows = read_csv('AFL-3.csv')
+calculate_volatility(data, 365, 3, symbol)
+rows = read_csv(args.sym + '-3.csv')
 data = Data(rows)
-calculate_day_of_week(data, 4)
+calculate_day_of_week(data, 4, symbol)
