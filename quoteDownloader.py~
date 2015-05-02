@@ -1,0 +1,6 @@
+import urllib2
+
+class QuoteDownloader:
+
+if __name__ == "__main__":
+   
