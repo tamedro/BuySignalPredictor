@@ -7,10 +7,13 @@ from sklearn import linear_model
 import argparse
 import sys
 
+import timeit
+
 
 def read_csv(filename):
     import csv
     with open(filename) as f: rows=[tuple(row) for row in csv.reader(f)]
+    f.close()
     return rows[1:]     # remove field names and return just data 
     
 def compile_features_and_values(rows, date_row, regression_days):   
@@ -20,7 +23,20 @@ def compile_features_and_values(rows, date_row, regression_days):
         features = []
         for jj in range(regression_days):
             day_index = ii + jj
-            features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8]), float(rows[day_index][10])]
+            features += [
+            float(rows[day_index][1]), 
+            float(rows[day_index][2]), 
+            float(rows[day_index][3]), 
+            float(rows[day_index][5]),
+            float(rows[day_index][6]), 
+            float(rows[day_index][7]), 
+            float(rows[day_index][8]), 
+            float(rows[day_index][10]),
+            float(rows[day_index][11]),
+            float(rows[day_index][12]),
+            float(rows[day_index][13]),
+            float(rows[day_index][14])
+            ]
         feature_sets += [features]
         value_sets += [float(rows[ii][9])]
     return feature_sets, value_sets    
@@ -28,9 +44,22 @@ def compile_features_and_values(rows, date_row, regression_days):
 def predict(regr, rows, day, regression_days):
     ii = day
     features = []
-    for jj in range( regression_days ):
+    for jj in range(regression_days):
         day_index = ii + jj        
-        features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8]), float(rows[day_index][10])]
+        features += [
+        float(rows[day_index][1]), 
+        float(rows[day_index][2]), 
+        float(rows[day_index][3]), 
+        float(rows[day_index][5]),
+        float(rows[day_index][6]), 
+        float(rows[day_index][7]), 
+        float(rows[day_index][8]), 
+        float(rows[day_index][10]),
+        float(rows[day_index][11]),
+        float(rows[day_index][12]),
+        float(rows[day_index][13]),
+        float(rows[day_index][14])
+        ]
     return regr.predict(features)
 
 def get_real_values(rows, num_predictions):
@@ -54,6 +83,7 @@ def get_date_row(rows, predict_date):
     return -1
 
 '''parse arguments'''
+start = timeit.default_timer()
 argparser = argparse.ArgumentParser()
 argparser.add_argument("--sym", help="stock symbol",
                         type=str, default='ge', required=False)
@@ -61,6 +91,16 @@ argparser.add_argument("--predictDate", help="day you would like to predict vola
                         type=str, default='2013-04-09', required=False)
 argparser.add_argument("--regressionDays", help="Amount of days in a regression sample",
                         type=int, default=10, required=False)
+argparser.add_argument("--alpha", help="Alpha for model",
+                        type=float, default=0.001, required=False)
+argparser.add_argument("--fit_intercept", help="fit_intercept",
+                        type=bool, default=False, required=False)
+argparser.add_argument("--normalize", help="fit_intercept",
+                        type=bool, default=False, required=False)
+argparser.add_argument("--max_iter", help="fit_intercept",
+                        type=int, default=10000000, required=False)
+argparser.add_argument("--l1_ratio", help="fit_intercept",
+                        type=float, default=0.5, required=False)
 args = argparser.parse_args()
 regression_days = args.regressionDays
 
@@ -80,31 +120,58 @@ predict_date = args.predictDate
 date_rows = []
 for ii in range(len(rows)):
     date_rows.append(get_date_row(rows[ii], predict_date))
-    if date_rows < 365:
-        print("predict date must be at least 251 days into file")
+    if date_rows[ii] < 252 or (date_rows[ii] + regression_days) > len(rows[ii]):
+        print("predict date must be at least 251 days into file", ii)
         sys.exit()
 
 '''compile features over all symbols'''
 all_features = []
 all_mpg = []
 for ii in range(len(rows)):
+    print("compiling file ", ii + 1, " of ", len(rows), "...")
     features, mpg = compile_features_and_values(rows[ii], date_rows[ii], regression_days)
     all_features += features
     all_mpg += mpg
 
 '''build and fit model'''
-regr = linear_model.Ridge(alpha=1,fit_intercept=False,normalize=False,max_iter=10000000)   # they call lambda alpha
+print("Fitting...")
+#regr = linear_model.LinearRegression()
+#regr = linear_model.Ridge(alpha=args.alpha,fit_intercept=args.fit_intercept,normalize=args.normalize,max_iter=args.max_iter)
+regr = linear_model.Lasso(alpha=args.alpha,fit_intercept=args.fit_intercept,normalize=args.normalize,max_iter=args.max_iter)
+#regr = linear_model.ElasticNet(alpha=args.alpha,l1_ratio=args.l1_ratio,fit_intercept=args.fit_intercept,normalize=args.normalize,max_iter=args.max_iter)
+
 regr.fit(all_features, all_mpg)
 
-'''calculate error'''
+'''Make Predictions'''
+print("Predicting...")
 real_values = []
 predictions = []
 for ii in range(len(rows)): 
-    real_values.append(float(rows[ii][date_rows[ii] - 365][9]))
+    real_values.append(float(rows[ii][date_rows[ii] - 252][9]))
     predictions.append(predict(regr, rows[ii], date_rows[ii], regression_days))
+
+'''calculate error'''
 error = get_accuracy(predictions, real_values)
+stop_time = timeit.default_timer()
+print("Done")
 print "real_values: ", real_values
 print "predictions: ", predictions
 print "error: ", error
 
 
+'''record results'''
+f  = open('log', 'a')
+f.write('***** New Run *****' + '\n')
+f.write('Execution time: ' + str(stop_time - start) + 's' + '\n')
+f.write('Regressions days:' + str(regression_days) + '\n')
+f.write('Alpha: ' + str(args.alpha) + '\n')
+f.write('fit_intercept: ' + str(args.fit_intercept) + '\n')
+f.write('l1_ratio: ' + str(args.l1_ratio) + '\n')
+f.write('normalize: ' + str(args.normalize) + '\n')
+f.write('max-iter: ' + str(args.max_iter) + '\n')
+f.write('Training symbols: ' + str(symbols) + '\n')
+f.write('Real volatilties: ' + str(real_values) + '\n')
+f.write('Predicted Volatilities: ' + str(predictions) + '\n')
+f.write('Error: ' + str(error) + '\n')
+f.write('\n\n')
+f.close

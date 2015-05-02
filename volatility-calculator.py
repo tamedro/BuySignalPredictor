@@ -64,19 +64,21 @@ def calculate_volatility(data, time_interval):
             rows.append(new_row)
     return rows
 
-def calculate_day_of_week(data):
-    num_columns = len(data.rows[0])
-    rows = []
-    for ii in range(len(data.rows) -1 ):
-        date_string = data.rows[ii][0]
+def add_date_info(data):
+    for row in data.rows:
+        date_string = row[0]
         date_array = date_string.split("-")
         today = dt.datetime(int(date_array[0]),int(date_array[1]), int(date_array[2]))
-        new_row = []
-        for jj in range(num_columns):
-            new_row.append(data.rows[ii][jj])
-        new_row.append(int(today.weekday()))
-        rows.append(new_row)
-    return rows
+        row.append(int(str(date_array[0]) + str(date_array[1]) + str(date_array[2])))
+        row.append(int(today.weekday()))
+        row.append(int(today.month))
+        row.append(int(today.year))
+
+def add_symbol(data, symbol):
+    rows = []
+    hash_symbol = abs(hash(symbol)) % (10 ** 8)
+    for ii in range(len(data.rows)):
+        data.rows[ii].append(hash_symbol)
 
 '''Parse arguments'''
 argparser = argparse.ArgumentParser()
@@ -98,6 +100,7 @@ for symbol in symbols:
     data = Data(rows)
     data.rows = calculate_volatility(data, 7,)
     data.rows = calculate_volatility(data, 31,)
-    data.rows = calculate_volatility(data, 365,)
-    data.rows = calculate_day_of_week(data)
+    data.rows = calculate_volatility(data, 252,)
+    add_date_info(data)
+    add_symbol(data, symbol)
     write_results(data, symbol)
