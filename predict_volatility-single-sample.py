@@ -19,26 +19,25 @@ def read_csv(filename):
 def compile_features_and_values(rows, date_row, regression_days):   
     feature_sets = []
     value_sets = []
-    for ii in range(date_row, len(rows) - regression_days):
-        features = []
-        for jj in range(regression_days):
-            day_index = ii + jj
-            features += [
-            float(rows[day_index][1]), 
-            float(rows[day_index][2]), 
-            float(rows[day_index][3]), 
-            float(rows[day_index][5]),
-            float(rows[day_index][6]), 
-            float(rows[day_index][7]), 
-            float(rows[day_index][8]), 
-            float(rows[day_index][10]),
-            float(rows[day_index][11]),
-            float(rows[day_index][12]),
-            float(rows[day_index][13]),
-            float(rows[day_index][14])
-            ]
-        feature_sets += [features]
-        value_sets += [float(rows[ii][9])]
+    features = []
+    for jj in range(regression_days):
+        day_index = date_row + jj
+        features += [
+        float(rows[day_index][1]), 
+        float(rows[day_index][2]), 
+        float(rows[day_index][3]), 
+        float(rows[day_index][5]),
+        float(rows[day_index][6]), 
+        float(rows[day_index][7]), 
+        float(rows[day_index][8]), 
+        float(rows[day_index][10]),
+        float(rows[day_index][11]),
+        float(rows[day_index][12]),
+        float(rows[day_index][13]),
+        float(rows[day_index][14])
+        ]
+    feature_sets += [features]
+    value_sets += [float(rows[date_row][9])]
     return feature_sets, value_sets    
     
 def predict(regr, rows, day, regression_days):
@@ -93,14 +92,6 @@ argparser.add_argument("--regressionDays", help="Amount of days in a regression 
                         type=int, default=10, required=False)
 argparser.add_argument("--alpha", help="Alpha for model",
                         type=float, default=0.001, required=False)
-argparser.add_argument("--fit_intercept", help="fit_intercept",
-                        type=bool, default=False, required=False)
-argparser.add_argument("--normalize", help="fit_intercept",
-                        type=bool, default=False, required=False)
-argparser.add_argument("--max_iter", help="fit_intercept",
-                        type=int, default=10000000, required=False)
-argparser.add_argument("--l1_ratio", help="fit_intercept",
-                        type=float, default=0.5, required=False)
 args = argparser.parse_args()
 regression_days = args.regressionDays
 
@@ -135,11 +126,7 @@ for ii in range(len(rows)):
 
 '''build and fit model'''
 print("Fitting...")
-#regr = linear_model.LinearRegression()
-#regr = linear_model.Ridge(alpha=args.alpha,fit_intercept=args.fit_intercept,normalize=args.normalize,max_iter=args.max_iter)
-regr = linear_model.Lasso(alpha=args.alpha,fit_intercept=args.fit_intercept,normalize=args.normalize,max_iter=args.max_iter)
-#regr = linear_model.ElasticNet(alpha=args.alpha,l1_ratio=args.l1_ratio,fit_intercept=args.fit_intercept,normalize=args.normalize,max_iter=args.max_iter)
-
+regr = linear_model.Ridge(alpha=args.alpha,fit_intercept=False,normalize=False,max_iter=10000000)   # they call lambda alpha
 regr.fit(all_features, all_mpg)
 
 '''Make Predictions'''
@@ -165,10 +152,6 @@ f.write('***** New Run *****' + '\n')
 f.write('Execution time: ' + str(stop_time - start) + 's' + '\n')
 f.write('Regressions days:' + str(regression_days) + '\n')
 f.write('Alpha: ' + str(args.alpha) + '\n')
-f.write('fit_intercept: ' + str(args.fit_intercept) + '\n')
-f.write('l1_ratio: ' + str(args.l1_ratio) + '\n')
-f.write('normalize: ' + str(args.normalize) + '\n')
-f.write('max-iter: ' + str(args.max_iter) + '\n')
 f.write('Training symbols: ' + str(symbols) + '\n')
 f.write('Real volatilties: ' + str(real_values) + '\n')
 f.write('Predicted Volatilities: ' + str(predictions) + '\n')

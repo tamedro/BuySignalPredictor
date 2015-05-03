@@ -14,7 +14,7 @@ def compile_features_and_values(rows):
     num_days = 10
     feature_sets = []
     value_sets = []
-    for ii in range(num_days, len(rows) - num_days):
+    for ii in range(0, len(rows) - num_days):
         features = []
         for jj in range(num_days):
             day_index = ii + jj
