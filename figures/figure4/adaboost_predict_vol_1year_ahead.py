@@ -95,7 +95,7 @@ def predict_volatility_1year_ahead(rows, day):
         day_index = ii + jj    +252    
         features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8])]
         
-    return regr.predict([features])
+    return float(regr.predict([features]))
 
 
 
