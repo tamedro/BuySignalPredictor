@@ -26,7 +26,7 @@ class CustomClassifier(BaseEstimator, ClassifierMixin):
          global class_instance
          class_instance -= 1
         
-     def fit(self, X, y):
+     def fit(self, X, y, sample_weight=array([])):
          # 1st Adaboost iteration: just return the current volatility
          if self.instance <= 1:     
              return self
