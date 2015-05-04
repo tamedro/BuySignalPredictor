@@ -28,7 +28,8 @@ class CustomClassifier(BaseEstimator, ClassifierMixin):
         
      def fit(self, X, y, sample_weight=array([])):
          # 1st Adaboost iteration: just return the current volatility
-         if self.instance <= 2:     
+         if self.instance <= 2:
+             self.y = y     
              return self
          # 2+ Adaboost iteration: use linera regreession as a weak learner
          else:
@@ -38,7 +39,7 @@ class CustomClassifier(BaseEstimator, ClassifierMixin):
      def predict(self, X):
          # 1st Adaboost iteration: just return the current volatility
          if self.instance <= 2:
-             return X[:,5]   # return 6th element of feature vector (which is the current volatility) 
+             return X[:,6]   # return 6th element of feature vector (which is the current volatility) 
          # 2+ Adaboost iteration: use linera regreession as a weak learner    
          else:
              return self.regr.predict(X)
@@ -73,7 +74,7 @@ def predict_volatility_1year_ahead(rows, day):
         features = []
         for jj in range(num_days):
             day_index = ii + jj
-            features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8])]
+            features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8]), float(rows[day_index][9])]
         feature_sets += [features]
         value_sets += [float(rows[ii-252][9])]
         value_sets_index.append([ii-252])
@@ -93,7 +94,7 @@ def predict_volatility_1year_ahead(rows, day):
     features = []
     for jj in range( num_days ):
         day_index = ii + jj    +252    
-        features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8])]
+        features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8]), float(rows[day_index][9])]
 
     return float(regr.predict([features]))
 
