@@ -3,6 +3,7 @@ from numpy import array
 import math
 import datetime as dt
 import argparse
+import csv
 
 class Data:
     def __init__(self, rows):
@@ -45,8 +46,11 @@ def calculate_volatility(data, time_interval):
             returns_sum = 0
             st_dev_list = []
             for jj in range(time_interval):
-                returns =  (float(data.rows[ii + jj][data.close_index]) / (float(data.rows[ii + jj + 1][data.close_index]))) - 1
-                returns_sum = returns_sum + returns
+                try:
+                    returns =  (float(data.rows[ii + jj][data.close_index]) / (float(data.rows[ii + jj + 1][data.close_index]))) - 1
+                    returns_sum = returns_sum + returns
+                except:
+                    print "ii={},jj={},close_index={}".format(ii, jj, data.close_index)
             avg_close = returns_sum / time_interval
             for jj in range(time_interval):
                 deviation =  ((float(data.rows[ii + jj][data.close_index]) / (float(data.rows[ii + jj + 1][data.close_index]))) - 1) - avg_close
@@ -56,7 +60,14 @@ def calculate_volatility(data, time_interval):
                 st_dev_sum = st_dev_sum + st_dev_list[jj]
             st_dev = st_dev_sum / time_interval
             volatility = math.sqrt(st_dev)
-            log_vol = math.log(volatility)
+            if (volatility > 0.0):
+                log_vol = math.log(volatility)
+            # log of a value <= 0 is undefined, so in case of no deviation
+            # just give log volatility a value corresponding to an extremely
+            # small deviation
+            else:
+                log_vol = -10
+
             new_row = []
             for jj in range (len(data.rows[ii])):
                 new_row.append(data.rows[ii][jj])
@@ -86,14 +97,22 @@ argparser.add_argument("--sym", help="stock symbol",
                         type=str, default='ge', required=False)
 argparser.add_argument("--predictDate", help="day you would like to predict volatilty",
                         type=str, default='2013-04-09', required=False)
+argparser.add_argument("--sp500",
+                       help="Use DATA/sp500.csv symbols instead of symbols.txt",
+                       action='store_true')
 args = argparser.parse_args()
 read_path = './DATA/original_csvs/'
 write_path = './DATA/processed_csvs/'
 
 symbols = []
-f = open('symbols.txt', 'r')
-for line in f:
-    symbols.append(line.rstrip())
+if not args.sp500:
+    f = open('symbols.txt', 'r')
+    for line in f:
+        symbols.append(line.rstrip())
+else:
+    with open('DATA/sp500.csv') as f: rows=[tuple(row) for row in csv.reader(f)]
+    for i in range(1, len(rows)):
+        symbols.append(rows[i][0])
 
 for symbol in symbols:
     rows = read_csv(read_path + symbol + '.csv')
