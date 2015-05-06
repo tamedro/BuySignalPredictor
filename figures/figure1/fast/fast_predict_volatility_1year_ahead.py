@@ -4,8 +4,18 @@ from numpy import array
 import sklearn
 from sklearn import linear_model
 
+
+# configuration
+#filename = 'ge-3.csv'
+filename = 'GE-processed.csv'
+
 num_days = 10
 #num_days = 252
+
+feature_columns = [1, 2, 3, 5, 7, 8, 9]
+#feature_columns = [1, 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14]
+
+
 
 def read_csv(filename):
     import csv
@@ -27,7 +37,9 @@ def learn_volatility_1year_ahead(regr, rows, day):
         features = []
         for jj in range(num_days):
             day_index = ii + jj
-            features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8]), float(rows[day_index][9])]
+            for kk in feature_columns:
+                features += [float(rows[day_index][kk])]
+
         feature_sets += [features]
         value_sets += [float(rows[ii-252][9])]
         value_sets_index.append([ii-252])
@@ -61,13 +73,15 @@ def predict_volatility_1year_ahead(regr, rows, day):
     features = []
     for jj in range( num_days ):
         day_index = ii + jj    +252    
-        features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8]), float(rows[day_index][9])]
-        
+        for kk in feature_columns:
+            features += [float(rows[day_index][kk])]
+ 
     return regr.predict(features)
 
 
 # read in csv file
-rows = read_csv('ge-3.csv')
+#rows = read_csv('ge-3.csv')
+rows = read_csv(filename)
 
 # learn
 regr = linear_model.Lasso(alpha=0.01,fit_intercept=False,normalize=False,max_iter=10000000)   # they call lambda alpha
