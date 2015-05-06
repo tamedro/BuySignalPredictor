@@ -5,8 +5,8 @@ import sklearn
 from sklearn import linear_model
 
 # configuration
-filename = 'ge-3.csv'
-#filename = 'GE-processed.csv'
+#filename = 'ge-3.csv'
+filename = 'GE-processed.csv'
 
 num_days = 10
 #num_days = 252
