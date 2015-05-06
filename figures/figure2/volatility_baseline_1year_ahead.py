@@ -12,7 +12,7 @@ def read_csv(filename):
     
     
 # read in csv file
-rows = read_csv('ge-3.csv')
+rows = read_csv('GE-processed.csv')
 
 #for ii in range(12000):
 for ii in range(12000):
