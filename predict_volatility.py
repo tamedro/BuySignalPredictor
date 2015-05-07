@@ -25,12 +25,9 @@ def compile_features_and_values(rows):
     
 def predict(regr, rows, day):
     num_days = 10
-    ii = day
-    features = []
-    for jj in range( num_days ):
-        day_index = ii + jj        
-        features += [float(rows[day_index][1]), float(rows[day_index][2]), float(rows[day_index][3]), float(rows[day_index][5]), float(rows[day_index][7]), float(rows[day_index][8])]
-    return regr.predict(features)
+    ii = day      
+    features = [float(rows[day][1]), float(rows[day][2]), float(rows[day][3]), float(rows[day][5]), float(rows[day][7]), float(rows[day][8]), float(rows[day][9])]
+    return regr.predict(features) 
 
 def get_real_values(rows, num_predictions):
     real_values = []
@@ -46,10 +43,10 @@ def get_accuracy(predictions, real_values):
         diff_sum = diff_sum + diff_squared
     return diff_sum / len(predictions)
 
-rows = read_csv('ge-3.csv')
+rows = read_csv('ge-4.csv')
 features, mpg = compile_features_and_values(rows)
 regr = linear_model.Lasso(alpha=0.01,fit_intercept=False,normalize=False,max_iter=10000000)   # they call lambda alpha
-regr.fit(features, mpg)
+result = regr.fit(features, mpg)
 real_values = get_real_values(rows, 10)
 predictions = []
 for day in range(10):

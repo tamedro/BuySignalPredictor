@@ -1,0 +1,600 @@
+Day: 252
+Estimator weights: [ 1.00393629  1.80144214]
+Estimator errors: [ 0.2681682  0.1416756]
+Day: 253
+Estimator weights: [ 1.00396125  1.82187734]
+Estimator errors: [ 0.26816331  0.13920876]
+Day: 254
+Estimator weights: [ 1.00398594  1.83730603]
+Estimator errors: [ 0.26815846  0.13737022]
+Day: 255
+Estimator weights: [ 1.00401198  1.84338916]
+Estimator errors: [ 0.26815335  0.13665096]
+Day: 256
+Estimator weights: [ 1.00403556  1.83904452]
+Estimator errors: [ 0.26814872  0.13716433]
+Day: 257
+Estimator weights: [ 1.00405929  1.83601177]
+Estimator errors: [ 0.26814407  0.13752366]
+Day: 258
+Estimator weights: [ 1.00408585  1.83290928]
+Estimator errors: [ 0.26813885  0.13789206]
+Day: 259
+Estimator weights: [ 1.00411686  1.90500278]
+Estimator errors: [ 0.26813277  0.12954331]
+Day: 260
+Estimator weights: [ 1.00414817  1.78946285]
+Estimator errors: [ 0.26812662  0.14313859]
+Day: 261
+Estimator weights: [ 1.00417972  1.7945417 ]
+Estimator errors: [ 0.26812043  0.1425168 ]
+Day: 262
+Estimator weights: [ 1.00421187  1.80293836]
+Estimator errors: [ 0.26811412  0.14149376]
+Day: 263
+Estimator weights: [ 1.0042339   1.82833166]
+Estimator errors: [ 0.2681098   0.13843714]
+Day: 264
+Estimator weights: [ 1.00425257  1.80950828]
+Estimator errors: [ 0.26810614  0.14069757]
+Day: 265
+Estimator weights: [ 1.0042672   1.77536456]
+Estimator errors: [ 0.26810327  0.14487646]
+Day: 266
+Estimator weights: [ 1.00428231  1.79064551]
+Estimator errors: [ 0.2681003  0.1429936]
+Day: 267
+Estimator weights: [ 1.00429809  1.79888478]
+Estimator errors: [ 0.26809721  0.14198687]
+Day: 268
+Estimator weights: [ 1.0043106   1.79787771]
+Estimator errors: [ 0.26809475  0.14210961]
+Day: 269
+Estimator weights: [ 1.00432645  1.78454763]
+Estimator errors: [ 0.26809164  0.1437425 ]
+Day: 270
+Estimator weights: [ 1.00434218  1.78262839]
+Estimator errors: [ 0.26808855  0.14397888]
+Day: 271
+Estimator weights: [ 1.00435798  1.78116376]
+Estimator errors: [ 0.26808545  0.14415949]
+Day: 272
+Estimator weights: [ 1.00437222  1.79529933]
+Estimator errors: [ 0.26808266  0.14242424]
+Day: 273
+Estimator weights: [ 1.00438302  1.79987714]
+Estimator errors: [ 0.26808054  0.14186602]
+Day: 274
+Estimator weights: [ 1.00439457  1.80347332]
+Estimator errors: [ 0.26807827  0.14142879]
+Day: 252
+Estimator weights: [ 1.00393629  1.80144214]
+Estimator errors: [ 0.2681682  0.1416756]
+Day: 253
+Estimator weights: [ 1.00396125  1.82187734]
+Estimator errors: [ 0.26816331  0.13920876]
+Day: 254
+Estimator weights: [ 1.00398594  1.83730603]
+Estimator errors: [ 0.26815846  0.13737022]
+Day: 255
+Estimator weights: [ 1.00401198  1.84338916]
+Estimator errors: [ 0.26815335  0.13665096]
+Day: 256
+Estimator weights: [ 1.00403556  1.83904452]
+Estimator errors: [ 0.26814872  0.13716433]
+Day: 257
+Estimator weights: [ 1.00405929  1.83601177]
+Estimator errors: [ 0.26814407  0.13752366]
+Day: 258
+Estimator weights: [ 1.00408585  1.83290928]
+Estimator errors: [ 0.26813885  0.13789206]
+Day: 259
+Estimator weights: [ 1.00411686  1.90500278]
+Estimator errors: [ 0.26813277  0.12954331]
+Day: 260
+Estimator weights: [ 1.00414817  1.78946285]
+Estimator errors: [ 0.26812662  0.14313859]
+Day: 261
+Estimator weights: [ 1.00417972  1.7945417 ]
+Estimator errors: [ 0.26812043  0.1425168 ]
+Day: 262
+Estimator weights: [ 1.00421187  1.80293836]
+Estimator errors: [ 0.26811412  0.14149376]
+Day: 263
+Estimator weights: [ 1.0042339   1.82833166]
+Estimator errors: [ 0.2681098   0.13843714]
+Day: 264
+Estimator weights: [ 1.00425257  1.80950828]
+Estimator errors: [ 0.26810614  0.14069757]
+Day: 265
+Estimator weights: [ 1.0042672   1.77536456]
+Estimator errors: [ 0.26810327  0.14487646]
+Day: 266
+Estimator weights: [ 1.00428231  1.79064551]
+Estimator errors: [ 0.2681003  0.1429936]
+Day: 267
+Estimator weights: [ 1.00429809  1.79888478]
+Estimator errors: [ 0.26809721  0.14198687]
+Day: 268
+Estimator weights: [ 1.0043106   1.79787771]
+Estimator errors: [ 0.26809475  0.14210961]
+Day: 269
+Estimator weights: [ 1.00432645  1.78454763]
+Estimator errors: [ 0.26809164  0.1437425 ]
+Day: 270
+Estimator weights: [ 1.00434218  1.78262839]
+Estimator errors: [ 0.26808855  0.14397888]
+Day: 271
+Estimator weights: [ 1.00435798  1.78116376]
+Estimator errors: [ 0.26808545  0.14415949]
+Day: 272
+Estimator weights: [ 1.00437222  1.79529933]
+Estimator errors: [ 0.26808266  0.14242424]
+Day: 273
+Estimator weights: [ 1.00438302  1.79987714]
+Estimator errors: [ 0.26808054  0.14186602]
+Day: 274
+Estimator weights: [ 1.00439457  1.80347332]
+Estimator errors: [ 0.26807827  0.14142879]
+Day: 275
+Estimator weights: [ 1.00440729  1.79662278]
+Estimator errors: [ 0.26807578  0.14226267]
+Day: 276
+Estimator weights: [ 1.00441672  1.80774008]
+Estimator errors: [ 0.26807393  0.14091148]
+Day: 277
+Estimator weights: [ 1.00442461  1.81299692]
+Estimator errors: [ 0.26807238  0.14027631]
+Day: 278
+Estimator weights: [ 1.00443254  1.81363179]
+Estimator errors: [ 0.26807082  0.14019976]
+Day: 279
+Estimator weights: [ 1.00444094  1.81436176]
+Estimator errors: [ 0.26806918  0.14011179]
+Day: 280
+Estimator weights: [ 1.00444763  1.80581904]
+Estimator errors: [ 0.26806786  0.14114419]
+Day: 281
+Estimator weights: [ 1.00444714  1.81631856]
+Estimator errors: [ 0.26806796  0.1398762 ]
+Day: 282
+Estimator weights: [ 1.0044412   1.84711456]
+Estimator errors: [ 0.26806913  0.13621204]
+Day: 283
+Estimator weights: [ 1.00443004  1.84054502]
+Estimator errors: [ 0.26807132  0.13698685]
+Day: 284
+Estimator weights: [ 1.00441855  1.81103683]
+Estimator errors: [ 0.26807357  0.14051286]
+Day: 285
+Estimator weights: [ 1.00440897  1.80829205]
+Estimator errors: [ 0.26807545  0.14084467]
+Day: 286
+Estimator weights: [ 1.00439825  1.80028558]
+Estimator errors: [ 0.26807755  0.1418163 ]
+Day: 287
+Estimator weights: [ 1.0043849   1.82490819]
+Estimator errors: [ 0.26808017  0.13884597]
+Day: 288
+Estimator weights: [ 1.00437315  1.8174569 ]
+Estimator errors: [ 0.26808248  0.1397393 ]
+Day: 289
+Estimator weights: [ 1.00436187  1.80974703]
+Estimator errors: [ 0.26808469  0.1406687 ]
+Day: 290
+Estimator weights: [ 1.00434552  1.80583626]
+Estimator errors: [ 0.2680879   0.14114211]
+Day: 291
+Estimator weights: [ 1.00433307  1.80418566]
+Estimator errors: [ 0.26809034  0.14134231]
+Day: 292
+Estimator weights: [ 1.0043193   1.78969765]
+Estimator errors: [ 0.26809304  0.1431098 ]
+Day: 293
+Estimator weights: [ 1.00430692  1.77758385]
+Estimator errors: [ 0.26809547  0.14460174]
+Day: 294
+Estimator weights: [ 1.00429599  1.77650981]
+Estimator errors: [ 0.26809762  0.14473464]
+Day: 295
+Estimator weights: [ 1.00428297  1.79271493]
+Estimator errors: [ 0.26810017  0.14274019]
+Day: 296
+Estimator weights: [ 1.00427101  1.81847741]
+Estimator errors: [ 0.26810252  0.13961667]
+Day: 297
+Estimator weights: [ 1.00425938  1.82141015]
+Estimator errors: [ 0.2681048   0.13926475]
+Day: 298
+Estimator weights: [ 1.00424353  1.80082426]
+Estimator errors: [ 0.26810791  0.14175076]
+Day: 299
+Estimator weights: [ 1.00422805  1.80051551]
+Estimator errors: [ 0.26811095  0.14178832]
+Day: 300
+Estimator weights: [ 1.00420038  1.80810639]
+Estimator errors: [ 0.26811638  0.14086714]
+Day: 301
+Estimator weights: [ 1.00416725  1.78419183]
+Estimator errors: [ 0.26812288  0.1437863 ]
+Day: 302
+Estimator weights: [ 1.00413413  1.79664792]
+Estimator errors: [ 0.26812938  0.1422596 ]
+Day: 303
+Estimator weights: [ 1.00410154  1.78488223]
+Estimator errors: [ 0.26813577  0.14370132]
+Day: 304
+Estimator weights: [ 1.00406897  1.75488885]
+Estimator errors: [ 0.26814217  0.14743163]
+Day: 305
+Estimator weights: [ 1.0040339   1.78425125]
+Estimator errors: [ 0.26814905  0.14377898]
+Day: 306
+Estimator weights: [ 1.00405215  1.76830386]
+Estimator errors: [ 0.26814547  0.14575339]
+Day: 307
+Estimator weights: [ 1.00406546  1.76459945]
+Estimator errors: [ 0.26814286  0.14621523]
+Day: 308
+Estimator weights: [ 1.00392146  1.73920166]
+Estimator errors: [ 0.26817111  0.14941437]
+Day: 309
+Estimator weights: [ 1.00377619  1.76594252]
+Estimator errors: [ 0.26819963  0.14604764]
+Day: 310
+Estimator weights: [ 1.00363023  1.77707617]
+Estimator errors: [ 0.26822827  0.14466454]
+Day: 311
+Estimator weights: [ 1.00348555  1.81670144]
+Estimator errors: [ 0.26825667  0.13983014]
+Day: 312
+Estimator weights: [ 1.00334426  1.83111098]
+Estimator errors: [ 0.26828441  0.13810598]
+Day: 313
+Estimator weights: [ 1.00318636  1.83228892]
+Estimator errors: [ 0.26831541  0.13796582]
+Day: 314
+Estimator weights: [ 1.00302     1.81646554]
+Estimator errors: [ 0.26834807  0.13985852]
+Day: 315
+Estimator weights: [ 1.00284231  1.83291954]
+Estimator errors: [ 0.26838296  0.13789084]
+Day: 316
+Estimator weights: [ 1.00266428  1.8005884 ]
+Estimator errors: [ 0.26841791  0.14177945]
+Day: 317
+Estimator weights: [ 1.00248509  1.81537096]
+Estimator errors: [ 0.2684531   0.13999025]
+Day: 318
+Estimator weights: [ 1.00230451  1.80316083]
+Estimator errors: [ 0.26848857  0.14146673]
+Day: 319
+Estimator weights: [ 1.00212451  1.81562358]
+Estimator errors: [ 0.26852392  0.13995984]
+Day: 320
+Estimator weights: [ 1.00194442  1.83387068]
+Estimator errors: [ 0.2685593   0.13777781]
+Day: 321
+Estimator weights: [ 1.00175711  1.83026695]
+Estimator errors: [ 0.26859609  0.13820647]
+Day: 322
+Estimator weights: [ 1.00157054  1.81328397]
+Estimator errors: [ 0.26863275  0.1402417 ]
+Day: 323
+Estimator weights: [ 1.00137542  1.79647536]
+Estimator errors: [ 0.26867108  0.14228066]
+Day: 324
+Estimator weights: [ 1.00116222  1.79122658]
+Estimator errors: [ 0.26871298  0.14292241]
+Day: 325
+Estimator weights: [ 1.00094845  1.79487535]
+Estimator errors: [ 0.26875499  0.14247603]
+Day: 326
+Estimator weights: [ 1.00073539  1.79028249]
+Estimator errors: [ 0.26879686  0.14303809]
+Day: 327
+Estimator weights: [ 1.00052044  1.798992  ]
+Estimator errors: [ 0.26883911  0.14197381]
+Day: 328
+Estimator weights: [ 1.00030556  1.79186029]
+Estimator errors: [ 0.26888135  0.1428448 ]
+Day: 329
+Estimator weights: [ 1.00010377  1.81543171]
+Estimator errors: [ 0.26892102  0.13998294]
+Day: 330
+Estimator weights: [ 0.99990134  1.8281895 ]
+Estimator errors: [ 0.26896082  0.1384541 ]
+Day: 331
+Estimator weights: [ 0.99969734  1.82288416]
+Estimator errors: [ 0.26900093  0.13908816]
+Day: 332
+Estimator weights: [ 0.99948564  1.82570857]
+Estimator errors: [ 0.26904256  0.1387503 ]
+Day: 333
+Estimator weights: [ 0.99927392  1.80508011]
+Estimator errors: [ 0.2690842   0.14123379]
+Day: 334
+Estimator weights: [ 0.99905793  1.8141048 ]
+Estimator errors: [ 0.26912668  0.14014276]
+Day: 335
+Estimator weights: [ 0.99884443  1.83255081]
+Estimator errors: [ 0.26916868  0.13793468]
+Day: 336
+Estimator weights: [ 0.99863095  1.83572695]
+Estimator errors: [ 0.26921068  0.13755744]
+Day: 337
+Estimator weights: [ 0.99842155  1.81710078]
+Estimator errors: [ 0.26925188  0.13978212]
+Day: 338
+Estimator weights: [ 0.99821244  1.80394236]
+Estimator errors: [ 0.26929302  0.14137184]
+Day: 339
+Estimator weights: [ 0.99800958  1.81446421]
+Estimator errors: [ 0.26933294  0.14009945]
+Day: 340
+Estimator weights: [ 0.99780763  1.8171454 ]
+Estimator errors: [ 0.26937269  0.13977676]
+Day: 341
+Estimator weights: [ 0.99764909  1.78013875]
+Estimator errors: [ 0.26940389  0.144286  ]
+Day: 342
+Estimator weights: [ 0.9974931  1.8163281]
+Estimator errors: [ 0.26943459  0.13987506]
+Day: 343
+Estimator weights: [ 0.99733079  1.81117183]
+Estimator errors: [ 0.26946654  0.14049656]
+Day: 344
+Estimator weights: [ 0.99716823  1.83346723]
+Estimator errors: [ 0.26949855  0.13782575]
+Day: 345
+Estimator weights: [ 0.99699923  1.81361195]
+Estimator errors: [ 0.26953182  0.14020216]
+Day: 346
+Estimator weights: [ 0.99682698  1.80665436]
+Estimator errors: [ 0.26956573  0.14104296]
+Day: 347
+Estimator weights: [ 0.99664983  1.80134083]
+Estimator errors: [ 0.26960061  0.14168792]
+Day: 348
+Estimator weights: [ 0.99648012  1.79242331]
+Estimator errors: [ 0.26963403  0.14277588]
+Day: 349
+Estimator weights: [ 0.99631146  1.78180969]
+Estimator errors: [ 0.26966725  0.14407982]
+Day: 350
+Estimator weights: [ 0.9961417   1.78712858]
+Estimator errors: [ 0.26970069  0.14342513]
+Day: 351
+Estimator weights: [ 0.9959701   1.76156382]
+Estimator errors: [ 0.26973448  0.14659459]
+Day: 352
+Estimator weights: [ 0.99584948  1.78400172]
+Estimator errors: [ 0.26975824  0.14380971]
+Day: 353
+Estimator weights: [ 0.99572501  1.78004081]
+Estimator errors: [ 0.26978276  0.14429809]
+Day: 354
+Estimator weights: [ 0.99560386  1.78058546]
+Estimator errors: [ 0.26980663  0.14423086]
+Day: 355
+Estimator weights: [ 0.99548317  1.79090822]
+Estimator errors: [ 0.26983041  0.14296141]
+Day: 356
+Estimator weights: [ 0.99535832  1.79502735]
+Estimator errors: [ 0.26985501  0.14245746]
+Day: 357
+Estimator weights: [ 0.99522963  1.79355451]
+Estimator errors: [ 0.26988037  0.14263748]
+Day: 358
+Estimator weights: [ 0.9951024   1.79705565]
+Estimator errors: [ 0.26990544  0.14220986]
+Day: 359
+Estimator weights: [ 0.99498791  1.80441499]
+Estimator errors: [ 0.269928    0.14131448]
+Day: 360
+Estimator weights: [ 0.99489108  1.81862015]
+Estimator errors: [ 0.26994708  0.13959953]
+Day: 361
+Estimator weights: [ 0.99479316  1.78085935]
+Estimator errors: [ 0.26996638  0.14419705]
+Day: 362
+Estimator weights: [ 0.99469684  1.78885369]
+Estimator errors: [ 0.26998536  0.14321332]
+Day: 363
+Estimator weights: [ 0.99460868  1.78193133]
+Estimator errors: [ 0.27000274  0.14406482]
+Day: 364
+Estimator weights: [ 0.99452039  1.97835406]
+Estimator errors: [ 0.27002014  0.12149441]
+Day: 365
+Estimator weights: [ 0.99443439  1.84089473]
+Estimator errors: [ 0.27003709  0.13694551]
+Day: 366
+Estimator weights: [ 0.99434783  1.82689365]
+Estimator errors: [ 0.27005416  0.13860874]
+Day: 367
+Estimator weights: [ 0.99426014  1.85033074]
+Estimator errors: [ 0.27007144  0.13583407]
+Day: 368
+Estimator weights: [ 0.99416964  1.81920374]
+Estimator errors: [ 0.27008928  0.13952945]
+Day: 369
+Estimator weights: [ 0.9940845   1.82027583]
+Estimator errors: [ 0.27010607  0.13940078]
+Day: 370
+Estimator weights: [ 0.99401359  1.80376427]
+Estimator errors: [ 0.27012005  0.14139346]
+Day: 371
+Estimator weights: [ 0.99395575  1.81473651]
+Estimator errors: [ 0.27013145  0.14006665]
+Day: 372
+Estimator weights: [ 0.99388148  1.82050174]
+Estimator errors: [ 0.27014609  0.13937368]
+Day: 373
+Estimator weights: [ 0.99380525  1.82261732]
+Estimator errors: [ 0.27016113  0.13912011]
+Day: 374
+Estimator weights: [ 0.99373371  1.79143215]
+Estimator errors: [ 0.27017523  0.14289723]
+Day: 375
+Estimator weights: [ 0.99365661  1.79307948]
+Estimator errors: [ 0.27019043  0.14269559]
+Day: 376
+Estimator weights: [ 0.9935783   1.77897012]
+Estimator errors: [ 0.27020588  0.14443035]
+Day: 377
+Estimator weights: [ 0.99350417  1.79177701]
+Estimator errors: [ 0.2702205  0.142855 ]
+Day: 378
+Estimator weights: [ 0.99342586  1.80014956]
+Estimator errors: [ 0.27023594  0.14183286]
+Day: 379
+Estimator weights: [ 0.99333354  1.8037192 ]
+Estimator errors: [ 0.27025414  0.14139893]
+Day: 380
+Estimator weights: [ 0.9932434   1.78685358]
+Estimator errors: [ 0.27027192  0.14345892]
+Day: 381
+Estimator weights: [ 0.99315735  1.7651079 ]
+Estimator errors: [ 0.27028889  0.14615177]
+Day: 382
+Estimator weights: [ 0.99307027  1.80169437]
+Estimator errors: [ 0.27030607  0.14164494]
+Day: 383
+Estimator weights: [ 0.99298436  1.79726732]
+Estimator errors: [ 0.27032301  0.14218404]
+Day: 384
+Estimator weights: [ 0.99289622  1.77712928]
+Estimator errors: [ 0.2703404   0.14465797]
+Day: 385
+Estimator weights: [ 0.9928052  1.7588392]
+Estimator errors: [ 0.27035835  0.14693578]
+Day: 386
+Estimator weights: [ 0.99271681  1.77462835]
+Estimator errors: [ 0.27037579  0.14496769]
+Day: 387
+Estimator weights: [ 0.99263097  1.76220709]
+Estimator errors: [ 0.27039272  0.14651413]
+Day: 388
+Estimator weights: [ 0.99254552  1.76949262]
+Estimator errors: [ 0.27040958  0.14560544]
+Day: 389
+Estimator weights: [ 0.99246636  1.80271019]
+Estimator errors: [ 0.2704252   0.14152148]
+Day: 390
+Estimator weights: [ 0.9923886   1.79291448]
+Estimator errors: [ 0.27044054  0.14271577]
+Day: 391
+Estimator weights: [ 0.9923057   1.80406463]
+Estimator errors: [ 0.2704569  0.141357 ]
+Day: 392
+Estimator weights: [ 0.99222295  1.80191802]
+Estimator errors: [ 0.27047323  0.14161775]
+Day: 393
+Estimator weights: [ 0.99212926  1.80638214]
+Estimator errors: [ 0.27049171  0.14107595]
+Day: 394
+Estimator weights: [ 0.99203158  1.82133402]
+Estimator errors: [ 0.27051099  0.13927388]
+Day: 395
+Estimator weights: [ 0.99193228  1.84698003]
+Estimator errors: [ 0.27053059  0.13622787]
+Day: 396
+Estimator weights: [ 0.99183194  1.84421574]
+Estimator errors: [ 0.27055039  0.13655347]
+Day: 397
+Estimator weights: [ 0.99173391  1.83482675]
+Estimator errors: [ 0.27056973  0.13766427]
+Day: 398
+Estimator weights: [ 0.99163307  1.82921318]
+Estimator errors: [ 0.27058964  0.13833203]
+Day: 399
+Estimator weights: [ 0.99153129  1.81660404]
+Estimator errors: [ 0.27060972  0.13984186]
+Day: 400
+Estimator weights: [ 0.99143392  1.807352  ]
+Estimator errors: [ 0.27062895  0.14095847]
+Day: 401
+Estimator weights: [ 0.99132449  1.78992623]
+Estimator errors: [ 0.27065055  0.14308177]
+Day: 402
+Estimator weights: [ 0.9912132   1.78939988]
+Estimator errors: [ 0.27067251  0.14314632]
+Day: 403
+Estimator weights: [ 0.99110036  1.81290501]
+Estimator errors: [ 0.27069479  0.1402874 ]
+Day: 404
+Estimator weights: [ 0.99098674  1.80088284]
+Estimator errors: [ 0.27071722  0.14174363]
+Day: 405
+Estimator weights: [ 0.99087212  1.81198166]
+Estimator errors: [ 0.27073985  0.1403988 ]
+Day: 406
+Estimator weights: [ 0.99075635  1.82544434]
+Estimator errors: [ 0.27076271  0.13878188]
+Day: 407
+Estimator weights: [ 0.99064056  1.81501741]
+Estimator errors: [ 0.27078557  0.14003282]
+Day: 408
+Estimator weights: [ 0.99052336  1.79364783]
+Estimator errors: [ 0.27080872  0.14262607]
+Day: 409
+Estimator weights: [ 0.99040609  1.76316792]
+Estimator errors: [ 0.27083187  0.14639402]
+Day: 410
+Estimator weights: [ 0.99028823  1.77745922]
+Estimator errors: [ 0.27085515  0.14461715]
+Day: 411
+Estimator weights: [ 0.99016792  1.79436178]
+Estimator errors: [ 0.27087891  0.14253879]
+Day: 412
+Estimator weights: [ 0.99003927  1.80026629]
+Estimator errors: [ 0.27090432  0.14181865]
+Day: 413
+Estimator weights: [ 0.98991273  1.79673518]
+Estimator errors: [ 0.27092932  0.14224895]
+Day: 414
+Estimator weights: [ 0.98978757  1.80794533]
+Estimator errors: [ 0.27095404  0.14088663]
+Day: 415
+Estimator weights: [ 0.98965653  1.81444492]
+Estimator errors: [ 0.27097992  0.14010177]
+Day: 416
+Estimator weights: [ 0.98952538  1.82497685]
+Estimator errors: [ 0.27100583  0.13883776]
+Day: 417
+Estimator weights: [ 0.98939317  1.82039567]
+Estimator errors: [ 0.27103195  0.1393864 ]
+Day: 418
+Estimator weights: [ 0.98925936  1.82510013]
+Estimator errors: [ 0.27105839  0.13882302]
+Day: 419
+Estimator weights: [ 0.98912683  1.82806444]
+Estimator errors: [ 0.27108458  0.13846902]
+Day: 420
+Estimator weights: [ 0.98898924  1.8218356 ]
+Estimator errors: [ 0.27111177  0.13921376]
+Day: 421
+Estimator weights: [ 0.98883643  1.80651865]
+Estimator errors: [ 0.27114197  0.14105941]
+Day: 422
+Estimator weights: [ 0.98866296  1.79554444]
+Estimator errors: [ 0.27117625  0.1423943 ]
+Day: 423
+Estimator weights: [ 0.98847246  1.80185354]
+Estimator errors: [ 0.2712139   0.14162558]
+Day: 424
+Estimator weights: [ 0.98828199  1.81160131]
+Estimator errors: [ 0.27125155  0.1404447 ]
+Day: 425
+Estimator weights: [ 0.98808481  1.81363639]
+Estimator errors: [ 0.27129053  0.14019921]
+Day: 426
+Estimator weights: [ 0.98788705  1.79426902]
+Estimator errors: [ 0.27132963  0.14255013]
+Day: 427
+Estimator weights: [ 0.9876863   1.78380302]
+Estimator errors: [ 0.27136932  0.14383417]
+Day: 428
+Estimator weights: [ 0.98749     1.77081568]
+Estimator errors: [ 0.27140813  0.14544092]
