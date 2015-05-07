@@ -12,10 +12,10 @@ def read_csv(filename):
     
     
 # read in csv file
-rows = read_csv('GE-processed.csv')
+rows = read_csv('../../DATA/processed_csvs/AAPL-processed.csv')
 
 #for ii in range(12000):
-for ii in range(12000):
+for ii in range(len(rows)-252):
     predicted = float(rows[ii * 1 + 252][9])
     actual    = float(rows[ii*1][9])
     print ii*1,',', (actual-predicted)**2
